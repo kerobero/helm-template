@@ -71,7 +71,7 @@ jobs:
     steps:
       - name: Check environment
         run: |
-        echo "Environment ${{ matrix.version }}""
+        echo "Environment ${{ matrix.version }}"
 
   deploy-dev:
     environment: dev
