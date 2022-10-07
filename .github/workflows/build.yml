@@ -61,3 +61,39 @@ jobs:
         run: |
           helm ls -A
           kubectl get all
+
+  check-environment:
+    needs: create-cluster  
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        environment: [dev, staging, prod]
+    steps:
+      - name: Check environment
+        run: |
+        echo "Environment ${{ matrix.version }}""
+
+  deploy-dev:
+    environment: dev
+    needs: check-environment
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check environment
+        run: |
+        echo "DEVELOPMENT"
+
+  deploy-staging:
+    environment: staging
+    needs: check-environment
+    runs-on: ubuntu-latest
+      - name: Check environment
+        run: |
+        echo "STAGING"
+
+  deploy-prod:
+    environment: prod
+    needs: check-environment
+    runs-on: ubuntu-latest
+      - name: Check environment
+        run: |
+        echo "PRODUCTION"
