@@ -35,9 +35,13 @@ jobs:
           echo Add other actions to build,
           echo test, and deploy your project.
 
-  create-cluster:
+  deploy-environment:
     needs: build  
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        environment: [dev, staging, prod]
+    environment: ${{ matrix.environment }}
     steps:
       - uses: actions/checkout@v3
 
@@ -61,40 +65,3 @@ jobs:
         run: |
           helm ls -A
           kubectl get all
-
-  check-environment:
-    needs: create-cluster  
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        environment: [dev, staging, prod]
-    steps:
-      - name: Check environment
-        run: echo Environment ${{ matrix.environment }}
-
-  deploy-dev:
-    environment: dev
-    needs: check-environment
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check environment
-        run: |
-          echo "DEVELOPMENT"
-
-  deploy-staging:
-    environment: staging
-    needs: check-environment
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check environment
-        run: |
-          echo "STAGING"
-
-  deploy-prod:
-    environment: prod
-    needs: check-environment
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check environment
-        run: |
-          echo "PRODUCTION"
