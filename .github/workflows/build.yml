@@ -33,7 +33,7 @@ jobs:
         env:
           CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
 
-  deploy-environment:
+  deploy:
     needs: build  
     runs-on: ubuntu-latest
     strategy:

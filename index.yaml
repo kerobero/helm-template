@@ -1,0 +1,7 @@
+apiVersion: v1
+entries:
+  stable:
+  - apiVersion: v1
+    appVersion: "0.1.0"
+    name: stable
+generated: "2022-10-07T23:10:16.6551306Z"
