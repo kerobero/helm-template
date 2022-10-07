@@ -44,4 +44,4 @@ jobs:
         run: |
           helm ls -A
           kubectl get all
-          kubectl get cm helm-template-${{ matrix.environment }} -o yaml
+          kubectl get cm
