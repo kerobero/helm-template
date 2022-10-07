@@ -85,6 +85,7 @@ jobs:
     environment: staging
     needs: check-environment
     runs-on: ubuntu-latest
+    steps:
       - name: Check environment
         run: |
           echo "STAGING"
@@ -93,6 +94,7 @@ jobs:
     environment: prod
     needs: check-environment
     runs-on: ubuntu-latest
+    steps:
       - name: Check environment
         run: |
           echo "PRODUCTION"
