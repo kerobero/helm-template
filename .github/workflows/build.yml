@@ -42,4 +42,8 @@ jobs:
         uses: helm/kind-action@v1.3.0
 
       - name: Check cluster
-        run: kubectl config get-contexts
+        run: |
+          kubectl config get-contexts
+          kubectl get ns
+          helm repo update
+          helm repo list
