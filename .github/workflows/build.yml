@@ -70,8 +70,7 @@ jobs:
         environment: [dev, staging, prod]
     steps:
       - name: Check environment
-        run: |
-        echo Environment ${{ matrix.version }}
+        run: echo Environment ${{ matrix.environment }}
 
   deploy-dev:
     environment: dev
