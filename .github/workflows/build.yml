@@ -53,6 +53,10 @@ jobs:
         run: |
           helm upgrade  --create-namespace --install helm-template stable/.
 
+      - name: Wait to deploy
+        run: sleep 10s
+        shell: bash
+
       - name: Check Installation
         run: |
           helm ls -A
