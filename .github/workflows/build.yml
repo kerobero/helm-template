@@ -47,10 +47,6 @@ jobs:
           kubectl config get-contexts
           kubectl get ns
 
-  deploy-chart:
-    needs: create-cluster  
-    runs-on: ubuntu-latest
-    steps:
       - name: Install Chart
         run: |
           helm upgrade  --create-namespace --install helm-template stable/.
