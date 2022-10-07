@@ -55,7 +55,7 @@ jobs:
 
       - name: Install Chart
         run: |
-          helm upgrade  --create-namespace --install helm-template stable/.
+          helm upgrade  --create-namespace --install helm-template-${{ matrix.environment }} stable/.
 
       - name: Wait to deploy
         run: sleep 10s
