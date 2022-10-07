@@ -79,7 +79,7 @@ jobs:
     steps:
       - name: Check environment
         run: |
-        echo "DEVELOPMENT"
+          echo "DEVELOPMENT"
 
   deploy-staging:
     environment: staging
@@ -87,7 +87,7 @@ jobs:
     runs-on: ubuntu-latest
       - name: Check environment
         run: |
-        echo "STAGING"
+          echo "STAGING"
 
   deploy-prod:
     environment: prod
@@ -95,4 +95,4 @@ jobs:
     runs-on: ubuntu-latest
       - name: Check environment
         run: |
-        echo "PRODUCTION"
+          echo "PRODUCTION"
