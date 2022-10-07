@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: {{ $fullName }}
+  name: {{ include "stable.fullname" . }}
 data:
   # property-like keys; each key maps to a simple value
   LOG_LEVEL: "info"
