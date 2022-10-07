@@ -36,14 +36,26 @@ jobs:
           echo test, and deploy your project.
 
   create-cluster:
+    needs: build  
     runs-on: ubuntu-latest
     steps:
       - name: Create k8s Kind Cluster
         uses: helm/kind-action@v1.3.0
 
-      - name: Check cluster
+      - name: Check Cluster
         run: |
           kubectl config get-contexts
           kubectl get ns
-          helm repo update
-          helm repo list
+
+  deploy-chart:
+    needs: create-cluster  
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install Chart
+        run: |
+          helm upgrade  --create-namespace --install helm-template stable/.
+
+      - name: Check Installation
+        run: |
+          helm ls -A
+          kubectl get all
